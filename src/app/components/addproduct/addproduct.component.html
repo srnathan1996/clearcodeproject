@@ -1,0 +1,70 @@
+  <div class="card cardsize">
+    <div class="card-header">
+      <h3>Add new project</h3>
+    </div>
+    <p-toast></p-toast>
+    <div class="card-body">
+        <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
+          <div class="form-group">
+              <label for="exampleInputEmail1">Project name</label>
+              <input type="text" pInputText  class="p-inputtext-sm" formControlName="projectname" placeholder="Project name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+              <small class="form-text errormessage"
+              *ngIf="myForm?.get('projectname')?.touched && myForm?.get('projectname')?.errors?.['required']">Project name is required</small>
+          </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Kick of date</label>
+              <p-calendar [style]="{'width':'100%'}" placeholder="Kickoff date" (onSelect)="setKickOffDate()" class="p-inputtext-sm" class="form-control" [minDate]="kickofminDate"  formControlName="kickoffdate"></p-calendar>                
+              <small class="form-text errormessage"
+              *ngIf="myForm?.get('kickoffdate')?.touched && myForm?.get('kickoffdate')?.errors?.['required']">Kickoff date is required</small>
+              <small class="form-text errormessage" *ngIf="myForm?.get('kickoffdate')?.errors?.['devdateexceed']">Kickoff date must be lesser than development date</small>
+              <small class="form-text errormessage" *ngIf="myForm?.get('kickoffdate')?.errors?.['testdateexceed']">Kickoff date must be lesser than testing dateexceeded</small>
+              <small class="form-text errormessage" *ngIf="myForm?.get('kickoffdate')?.errors?.['deliverydateexceed']">Kickoff date must be lesser than delivery date</small>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Development Completed Date</label>
+              <p-calendar [style]="{'width':'100%'}" [style]="{'width':'100%'}" placeholder="Kickoff date" class="p-inputtext-sm" (onSelect)="setDevDate()" placeholder="Development completed date" class="form-control" [minDate]="devMinDate" formControlName="devcd"></p-calendar>
+              <small class="form-text errormessage"
+              *ngIf="myForm?.get('devcd')?.touched && myForm?.get('devcd')?.errors?.['required']">Development completed date is required</small>
+              <small class="form-text errormessage" *ngIf="myForm?.get('devcd')?.errors?.['testdateexceed']">Development date must be lesser than testing date</small>
+              <small class="form-text errormessage" *ngIf="myForm?.get('devcd')?.errors?.['deliverydateexceed']">Development date must be lesser than delivery date</small>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Testing Completed Date</label>
+              <p-calendar [style]="{'width':'100%'}"  placeholder="Kickoff date" class="p-inputtext-sm" (onSelect)="setTestDate()" placeholder="Testing completed date" class="form-control" [minDate]="testMinDate" formControlName="testcd"></p-calendar>
+              <small class="form-text errormessage"
+              *ngIf="myForm?.get('testcd')?.touched && myForm?.get('testcd')?.errors?.['required']">Testing completed date is required</small>
+              <small class="form-text errormessage" *ngIf="myForm?.get('testcd')?.errors?.['deliverydateexceed']">Testing date must be lesser than delivery date</small>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">No.of.Testers</label>
+              <input type="number" min="1"  pInputText  class="p-inputtext-sm" formControlName="nooftesters" placeholder="No of testers" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+              <small class="form-text errormessage"
+              *ngIf="myForm?.get('nooftesters')?.touched && myForm?.get('nooftesters')?.errors?.['required']">No of testers is required</small>
+              <small class="form-text errormessage"
+              *ngIf="myForm?.get('nooftesters')?.touched && myForm?.get('nooftesters')?.errors?.['min']">Tester count should be min 1</small>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">No.of.Developers</label>
+              <input type="number" min="1" pInputText  class="p-inputtext-sm" formControlName="noofdevelopers" placeholder="No of Developers" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+              <small class="form-text errormessage"
+              *ngIf="myForm?.get('noofdevelopers')?.touched && myForm?.get('noofdevelopers')?.errors?.['required']">No of developers is required</small>
+              <small class="form-text errormessage"
+              *ngIf="myForm?.get('noofdevelopers')?.touched && myForm?.get('noofdevelopers')?.errors?.['min']">Developers count should be min 1</small>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Project cost</label>
+              <input type="text" (change)="checkCost($event)"  pInputText  class="p-inputtext-sm" formControlName="projectcost" placeholder="Project cost" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+              <small class="form-text errormessage" *ngIf="myForm?.get('projectcost')?.touched && myForm?.get('projectcost')?.errors?.['required']">Project cost is required</small>
+              <small class="form-text errormessage" *ngIf="myForm?.get('projectcost')?.touched && myForm?.get('projectcost')?.errors?.['costexceed']">Project cost must be greater than 100000</small>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Delivery date</label>
+              <p-calendar [style]="{'width':'100%'}"  class="p-inputtext-sm" placeholder="Delivery date" class="form-control" [minDate]="delMinDate" formControlName="deliverydate"></p-calendar>
+              <small class="form-text errormessage"
+              *ngIf="myForm?.get('deliverydate')?.touched && myForm?.get('deliverydate')?.errors?.['required']">Delivery date is required</small>
+            </div>
+            <!-- <button type="submit" class="btn btn-primary">Save</button> -->
+            <p-button type="submit" label="Save"></p-button>
+          </form>
+    </div>
+  </div>

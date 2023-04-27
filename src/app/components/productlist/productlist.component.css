@@ -1,0 +1,29 @@
+p-table {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5%;
+  }
+.norecords{
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ align-content: center;
+ justify-items: center;
+}
+  .card {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3%;
+  }
+  a {
+    cursor: pointer;
+  }
+
+  .pos {
+    width: 30%;
+    position: absolute;
+    right: 10px;
+    top: 60px;
+}

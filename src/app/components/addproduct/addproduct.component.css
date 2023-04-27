@@ -1,0 +1,32 @@
+.cardsize{
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+}
+
+.form-group{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.form-group > label {
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+.form-group > small {
+    margin-top: 10px;
+    color: red;
+    font-size: 15px;
+}
+.form-control {
+    width: 90%;
+
+}
+.pos {
+    width: 30%;
+    position: absolute;
+    right: 10px;
+    top: 60px;
+}
